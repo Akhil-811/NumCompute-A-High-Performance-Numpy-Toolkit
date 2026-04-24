@@ -9,9 +9,13 @@ def stable_sort(arr):
     """
     Perform stable sort.
 
+    Parameters
+    ----------
+    arr : np.ndarray of shape (n,)
+
     Returns
     -------
-    np.ndarray
+    np.ndarray of shape (n,)
         Sorted array (stable).
     """
     return np.sort(arr, kind='stable')
@@ -23,13 +27,13 @@ def multi_key_sort(arr, keys):
 
     Parameters
     ----------
-    arr : np.ndarray
-    keys : list of arrays (same length as arr)
+    arr : np.ndarray of shape (n,)
+    keys : list of np.ndarray (each of shape (n,))
 
     Returns
     -------
-    np.ndarray
-        Sorted array based on keys
+    np.ndarray of shape (n,)
+        Array sorted based on multiple keys.
     """
     return arr[np.lexsort(keys[::-1])]
 
@@ -41,6 +45,16 @@ def multi_key_sort(arr, keys):
 def top_k(arr, k):
     """
     Return indices of top-k largest elements.
+
+    Parameters
+    ----------
+    arr : np.ndarray of shape (n,)
+    k : int
+
+    Returns
+    -------
+    np.ndarray of shape (k,)
+        Indices of top-k elements.
     """
     idx = np.argpartition(arr, -k)[-k:]
     return idx[np.argsort(arr[idx])[::-1]]
@@ -49,6 +63,16 @@ def top_k(arr, k):
 def quickselect(arr, k):
     """
     Return k-th smallest element.
+
+    Parameters
+    ----------
+    arr : np.ndarray of shape (n,)
+    k : int
+
+    Returns
+    -------
+    float or int
+        k-th smallest value.
     """
     return np.partition(arr, k)[k]
 
@@ -59,12 +83,17 @@ def quickselect(arr, k):
 
 def binary_search(arr, target):
     """
-    Classic binary search.
+    Perform binary search on sorted array.
+
+    Parameters
+    ----------
+    arr : np.ndarray of shape (n,)
+    target : scalar
 
     Returns
     -------
     int
-        Index if found, else -1
+        Index if found, else -1.
     """
     left, right = 0, len(arr) - 1
 
@@ -83,13 +112,17 @@ def binary_search(arr, target):
 
 def binary_search_with_insertion(arr, target):
     """
-    Spec-compliant binary search.
+    Binary search with insertion index.
+
+    Parameters
+    ----------
+    arr : np.ndarray of shape (n,)
+    target : scalar
 
     Returns
     -------
-    tuple (index, exists)
-        index : insertion index
-        exists : bool
+    tuple (int, bool)
+        insertion index and existence flag.
     """
     left, right = 0, len(arr)
 
