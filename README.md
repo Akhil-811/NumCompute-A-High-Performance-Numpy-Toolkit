@@ -189,8 +189,10 @@ jupyter notebook quickstart.ipynb
 
 ## Author
 
-Eruva Akhil  
-B.Tech Artificial Intelligence & Machine Learning  
+| Akhil Eruva             | Pravallika Thippanna               | Shweta Bhattacharjee Porna            |
+|-------------------------------------|-----------------------------------|-------------------------------------------|-------------------------------------------|
+| Masters of Artificial Intelligence And Machine Learning  | Masters of Artificial Intelligence And Machine Learning | Masters Of Computer Science And Engineering |
+| [Email](mailto:eruvaakku25@gmail.com)  | [Email](mailto:pravallikathippanna@gmail.com ) | [Email](mailto:shwetabhattacharje@gmail.com) 
 
 ---
 
