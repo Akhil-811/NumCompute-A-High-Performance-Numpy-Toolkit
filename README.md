@@ -1,0 +1,199 @@
+# NumCompute: A Modular Machine Learning Framework from Scratch
+
+## Overview
+
+NumCompute is a fully modular, NumPy-based machine learning framework designed to replicate the core architecture of modern ML libraries such as scikit-learn.
+
+This project emphasizes:
+- Algorithmic transparency
+- Numerical correctness
+- Vectorized computation
+- Clean and reusable software design
+
+It is developed as part of an academic project and follows industry-grade engineering practices.
+
+---
+
+## Objectives
+
+- Build ML infrastructure from first principles
+- Ensure high-performance computation via NumPy vectorization
+- Provide a consistent and extensible API
+- Demonstrate end-to-end ML workflow without external ML libraries
+
+---
+
+## Installation
+
+### Requirements
+- Python ≥ 3.8
+- NumPy ≥ 1.21
+
+### Install Locally
+
+```bash
+git clone <repo-url>
+cd NumCompute
+pip install -e .
+```
+
+### Development Mode
+
+```bash
+pip install -e .[dev]
+```
+---
+## Project Structure
+
+```
+NumCompute/
+├── numcompute/
+│   ├── io.py
+│   ├── preprocessing.py
+│   ├── sort_search.py
+│   ├── rank.py
+│   ├── stats.py
+│   ├── metrics.py
+│   ├── optim.py
+│   ├── pipeline.py
+│   ├── utils.py
+│   └── benchmarking.py
+├── tests/
+├── demo/
+│   └── quickstart.ipynb
+├── README.md
+└── pyproject.toml
+```
+---
+
+## Usage Example
+
+```python
+import numpy as np
+from numcompute.pipeline import Pipeline
+from numcompute.preprocessing import Imputer, StandardScaler
+
+X = np.array([[1, 2, np.nan],
+              [3, np.nan, 6],
+              [7, 8, 9]])
+
+pipeline = Pipeline([
+    ("imputer", Imputer()),
+    ("scaler", StandardScaler())
+])
+
+X_transformed = pipeline.fit(X).transform(X)
+print(X_transformed)
+```
+
+---
+
+## API Overview
+
+### Data Handling (`io.py`)
+- `read_csv()` → Efficient CSV loading with NaN handling and chunking
+
+### Preprocessing (`preprocessing.py`)
+- StandardScaler → Z-score normalization
+- MinMaxScaler → Feature scaling
+- Imputer → Missing value handling
+- OneHotEncoder → Categorical encoding
+
+### Sorting & Searching (`sort_search.py`)
+- Stable sorting (`np.sort`)
+- Top-k selection (`argpartition`)
+- Quickselect (k-th element)
+- Binary search (logarithmic complexity)
+
+### Ranking (`rank.py`)
+- Ranking with tie-handling strategies
+- Percentile computation
+
+### Statistics (`stats.py`)
+- Mean, variance, min, max
+- Histogram generation
+- Quantile estimation
+- Streaming statistics (Welford algorithm)
+
+### Metrics (`metrics.py`)
+- Accuracy, Precision, Recall, F1 Score
+- Mean Squared Error (MSE)
+- Confusion Matrix
+- ROC AUC
+
+### Optimization (`optim.py`)
+- Finite-difference gradient estimation
+- Jacobian computation
+
+### Pipeline (`pipeline.py`)
+- Pipeline (sequential transformations)
+- FeatureUnion (parallel transformations)
+
+### Utilities (`utils.py`)
+- Distance metrics
+- Activation functions
+- LogSumExp
+- Batch processing
+
+### Benchmarking (`benchmarking.py`)
+- Performance comparison tools
+
+---
+
+## Performance Evaluation
+
+| Operation        | Vectorized NumPy | Python Loop | Speedup |
+|-----------------|------------------|------------|---------|
+| Sum of squares  | ~0.002s          | ~0.15s     | ~75x    |
+
+---
+
+## Testing & Validation
+
+Run tests using:
+
+```bash
+pytest -v
+```
+
+Includes:
+- 25+ unit tests
+- Edge cases (NaNs, empty arrays, duplicates, large k, etc.)
+
+---
+
+## Design Principles
+
+- Vectorization-first approach
+- Numerical stability
+- Consistent API design
+- Modular architecture
+
+---
+
+## Demo
+
+```bash
+cd demo
+jupyter notebook quickstart.ipynb
+```
+
+---
+
+## Future Work
+- Add ML models
+- Cross-validation
+- Hyperparameter tuning
+
+---
+
+## Author
+
+Eruva Akhil  
+B.Tech Artificial Intelligence & Machine Learning  
+
+---
+
+## Conclusion
+
+NumCompute demonstrates how a complete ML framework can be built from scratch using NumPy, focusing on performance, modularity, and clarity.
