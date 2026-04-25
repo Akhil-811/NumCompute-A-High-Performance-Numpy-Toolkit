@@ -1,5 +1,6 @@
 import time
 
+
 def benchmark(func, *args, repeat=5):
     times = []
     for _ in range(repeat):
