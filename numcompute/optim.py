@@ -19,6 +19,23 @@ def finite_diff_grad(f, x, eps=1e-5):
 
     return grad
 
+#--------------------
+# Jacobian Functions
+#--------------------
+
+
+def jacobian(f, x, eps=1e-5):
+    fx = f(x)
+    J = np.zeros((len(fx), len(x)))
+
+    for i in range(len(x)):
+        x1 = x.copy()
+        x1[i] += eps
+        J[:, i] = (f(x1) - fx) / eps
+
+    return J
+
+
 # ----------------------------
 # Spec-Compliant Functions
 # ----------------------------
