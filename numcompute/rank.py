@@ -6,6 +6,18 @@ import numpy as np
 # ----------------------------
 
 def rankdata(x):
+    """
+    Assign ordinal ranks to data.
+
+    Parameters
+    ----------
+    x : np.ndarray of shape (n,)
+
+    Returns
+    -------
+    np.ndarray of shape (n,)
+        Ordinal ranks.
+    """
     temp = x.argsort()
     ranks = np.empty_like(temp, dtype=float)
     ranks[temp] = np.arange(len(x))
@@ -13,6 +25,18 @@ def rankdata(x):
 
 
 def rank_with_ties(x):
+    """
+    Assign average ranks for tied values.
+
+    Parameters
+    ----------
+    x : np.ndarray of shape (n,)
+
+    Returns
+    -------
+    np.ndarray of shape (n,)
+        Ranks with ties handled by averaging.
+    """
     sorted_idx = np.argsort(x)
     ranks = np.zeros(len(x), dtype=float)
     i = 0
@@ -32,6 +56,18 @@ def rank_with_ties(x):
 
 
 def percentile(x):
+    """
+    Compute percentile rank in [0, 1].
+
+    Parameters
+    ----------
+    x : np.ndarray of shape (n,)
+
+    Returns
+    -------
+    np.ndarray of shape (n,)
+        Percentile ranks.
+    """
     return rank_with_ties(x) / (len(x) - 1 + 1e-8)
 
 
@@ -45,14 +81,14 @@ def rank(x, method='average'):
 
     Parameters
     ----------
-    x : np.ndarray
+    x : np.ndarray of shape (n,)
     method : {'average', 'dense', 'ordinal'}
 
     Returns
     -------
-    np.ndarray
+    np.ndarray of shape (n,)
+        Computed ranks.
     """
-
     x = np.asarray(x)
 
     if method == 'ordinal':
@@ -72,17 +108,18 @@ def rank(x, method='average'):
 
 def percentile_full(x, q, interpolation='linear'):
     """
-    Compute percentile with interpolation options.
+    Compute percentile value.
 
     Parameters
     ----------
-    x : np.ndarray
-    q : float (0-100)
+    x : np.ndarray of shape (n,)
+    q : float (0–100)
     interpolation : {'linear', 'lower', 'higher', 'midpoint'}
 
     Returns
     -------
     float
+        Interpolated percentile value.
     """
     x = np.sort(x)
     n = len(x)

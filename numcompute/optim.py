@@ -2,10 +2,23 @@ import numpy as np
 
 
 # ----------------------------
-# Existing Functions (Keep)
+# Existing Functions 
 # ----------------------------
 
 def finite_diff_grad(f, x, eps=1e-5):
+    """
+    Compute gradient using central finite differences.
+
+    Parameters
+    ----------
+    f : function
+    x : np.ndarray of shape (n,)
+    eps : float
+
+    Returns
+    -------
+    np.ndarray of shape (n,)
+    """
     grad = np.zeros_like(x, dtype=float)
 
     for i in range(len(x)):
@@ -19,12 +32,21 @@ def finite_diff_grad(f, x, eps=1e-5):
 
     return grad
 
-#--------------------
-# Jacobian Functions
-#--------------------
-
 
 def jacobian(f, x, eps=1e-5):
+    """
+    Compute Jacobian matrix using forward differences.
+
+    Parameters
+    ----------
+    f : function returning np.ndarray
+    x : np.ndarray of shape (n,)
+    eps : float
+
+    Returns
+    -------
+    np.ndarray of shape (m, n)
+    """
     fx = f(x)
     J = np.zeros((len(fx), len(x)))
 
@@ -47,20 +69,13 @@ def grad(f, x, h=1e-5, method='central'):
     Parameters
     ----------
     f : function
-        Scalar function f(x)
-
-    x : np.ndarray
-        Input vector
-
+    x : np.ndarray of shape (n,)
     h : float
-        Step size
-
     method : {'central', 'forward'}
 
     Returns
     -------
-    np.ndarray
-        Gradient vector
+    np.ndarray of shape (n,)
     """
 
     x = np.asarray(x)
