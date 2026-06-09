@@ -97,6 +97,8 @@ NumCompute/
 ├── README.md
 ├── pyproject.toml
 └── report.pdf
+----
+```
 
 ## Usage Example
 
@@ -300,14 +302,15 @@ jupyter notebook stream_demo.ipynb
 - Distributed stream processing
 
 ---
-
+```
 ## Author
 
 Eruva Akhil  
 B.Tech Artificial Intelligence & Machine Learning  
 
 ---
-
+```
 ## Conclusion
 
 NumCompute demonstrates how a complete ML framework can be built from scratch using NumPy, focusing on performance, modularity, and clarity.
+```
