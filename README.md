@@ -11,6 +11,24 @@ This project emphasizes:
 - Clean and reusable software design
 
 It is developed as part of an academic project and follows industry-grade engineering practices.
+---
+
+## Assignment 2 Extensions
+
+This project extends the original NumCompute framework with a streaming machine learning architecture capable of incremental learning and ensemble modelling.
+
+New capabilities include:
+
+- Decision Tree Classifier implemented from scratch
+- Random Forest Classifier implemented from scratch
+- Streaming learning via chunk-wise updates
+- StreamTrainer framework
+- Incremental preprocessing support
+- Real-time metric tracking
+- Model benchmarking utilities
+- Built-in visualisation module
+
+The framework supports both traditional batch workflows and simulated online learning scenarios.
 
 ---
 
@@ -45,26 +63,40 @@ pip install -e .[dev]
 ---
 ## Project Structure
 
-```
+```text
 NumCompute/
 ├── numcompute/
+│   ├── __init__.py
+│   ├── benchmarking.py
 │   ├── io.py
-│   ├── preprocessing.py
-│   ├── sort_search.py
-│   ├── rank.py
-│   ├── stats.py
 │   ├── metrics.py
 │   ├── optim.py
 │   ├── pipeline.py
-│   ├── utils.py
-│   └── benchmarking.py
-├── tests/
+│   ├── preprocessing.py
+│   ├── rank.py
+│   ├── sort_search.py
+│   ├── stats.py
+│   ├── stream.py
+│   ├── tree.py
+│   ├── visualise.py
+│   └── utils.py
+│
 ├── demo/
-│   └── quickstart.ipynb
+│   ├── quickstart.ipynb
+│   └── stream_demo.ipynb
+│
+├── tests/
+│   ├── test_preprocessing.py
+│   ├── test_pipeline.py
+│   ├── test_metrics.py
+│   ├── test_tree.py
+│   ├── test_stream.py
+│   ├── test_ensemble.py
+│   └── ...
+│
 ├── README.md
-└── pyproject.toml
-```
----
+├── pyproject.toml
+└── report.pdf
 
 ## Usage Example
 
@@ -137,15 +169,65 @@ print(X_transformed)
 
 ### Benchmarking (`benchmarking.py`)
 - Performance comparison tools
+  
+### Decision Trees (`tree.py`)
+
+- DecisionTreeClassifier
+- Gini impurity splitting
+- Recursive tree construction
+- Predict and predict_proba support
+- Streaming updates through partial_fit()
+
+### Ensemble Learning (`ensemble.py`)
+
+- RandomForestClassifier
+- Bootstrap sampling
+- Feature subsampling
+- Majority voting
+- Streaming-compatible training
+
+### Streaming Learning (`stream.py`)
+
+- StreamTrainer
+- Chunk-based training
+- Metric tracking
+- Model evaluation
+- Performance monitoring
+
+### Visualisation (`visualise.py`)
+
+- Accuracy over time
+- Model comparison plots
+- Streaming performance graphs
+- Benchmark visualisations
 
 ---
 
 ## Performance Evaluation
 
-| Operation        | Vectorized NumPy | Python Loop | Speedup |
-|-----------------|------------------|------------|---------|
-| Sum of squares  | ~0.002s          | ~0.15s     | ~75x    |
+## Streaming Learning Results
 
+Experiments were conducted using a synthetic classification dataset containing 2,000 samples and 5 features.
+
+### Decision Tree Performance
+
+| Metric | Value |
+|----------|----------|
+| Accuracy | 95.35% |
+| Precision | 96.16% |
+| Recall | 94.54% |
+| F1 Score | 95.34% |
+
+### Random Forest Performance
+
+| Metric | Value |
+|----------|----------|
+| Accuracy | 85.30% |
+| Precision | 87.41% |
+| Recall | 82.72% |
+| F1 Score | 85.00% |
+
+The Decision Tree achieved the strongest overall performance under the streaming configuration used in this project. Accuracy visualisations demonstrated stable learning behaviour across successive stream chunks.
 ---
 
 ## Testing & Validation
@@ -157,8 +239,15 @@ pytest -v
 ```
 
 Includes:
-- 25+ unit tests
-- Edge cases (NaNs, empty arrays, duplicates, large k, etc.)
+
+- 53 automated unit tests
+- Streaming workflow validation
+- Decision Tree testing
+- Random Forest testing
+- Missing value handling
+- Numerical stability checks
+- Edge-case validation
+- Pipeline integration tests
 
 ---
 
@@ -170,6 +259,19 @@ Includes:
 - Modular architecture
 
 ---
+## Benchmarking
+
+NumCompute includes built-in benchmarking utilities for measuring:
+
+- Model training time
+- Prediction latency
+- Streaming update performance
+- End-to-end workflow execution
+
+Benchmark results can be generated using:
+
+```python
+from numcompute.benchmarking import benchmark_stream
 
 ## Demo
 
@@ -177,13 +279,25 @@ Includes:
 cd demo
 jupyter notebook quickstart.ipynb
 ```
+cd demo
+jupyter notebook stream_demo.ipynb
 
 ---
 
+# 8. Replace Future Work
+
+```md
 ## Future Work
-- Add ML models
-- Cross-validation
-- Hyperparameter tuning
+
+- True online learning algorithms
+- Regression Trees
+- Random Forest Regressors
+- Gradient Boosting
+- Hyperparameter optimisation
+- Cross-validation framework
+- Feature importance analysis
+- Concept drift detection
+- Distributed stream processing
 
 ---
 
