@@ -5,28 +5,17 @@
 NumCompute is a fully modular, NumPy-based machine learning framework designed to replicate the core architecture of modern ML libraries such as scikit-learn.
 
 This project emphasizes:
+
 - Algorithmic transparency
 - Numerical correctness
 - Vectorized computation
 - Clean and reusable software design
+- Modular architecture
+- Incremental and streaming machine learning
+- Ensemble modelling
+- Automated testing and benchmarking
 
-It is developed as part of an academic project and follows industry-grade engineering practices.
----
-
-## Assignment 2 Extensions
-
-This project extends the original NumCompute framework with a streaming machine learning architecture capable of incremental learning and ensemble modelling.
-
-New capabilities include:
-
-- Decision Tree Classifier implemented from scratch
-- Random Forest Classifier implemented from scratch
-- Streaming learning via chunk-wise updates
-- StreamTrainer framework
-- Incremental preprocessing support
-- Real-time metric tracking
-- Model benchmarking utilities
-- Built-in visualisation module
+NumCompute provides a complete machine learning workflow built from first principles using NumPy, without relying on external machine learning libraries.
 
 The framework supports both traditional batch workflows and simulated online learning scenarios.
 
@@ -35,15 +24,20 @@ The framework supports both traditional batch workflows and simulated online lea
 ## Objectives
 
 - Build ML infrastructure from first principles
-- Ensure high-performance computation via NumPy vectorization
+- Ensure high-performance computation through NumPy vectorization
 - Provide a consistent and extensible API
-- Demonstrate end-to-end ML workflow without external ML libraries
+- Demonstrate end-to-end ML workflows without external ML libraries
+- Support incremental and streaming learning
+- Implement machine learning algorithms from scratch
+- Provide reusable preprocessing, pipeline, metrics, and utility components
+- Enable model evaluation, benchmarking, and visualisation
 
 ---
 
 ## Installation
 
 ### Requirements
+
 - Python ≥ 3.8
 - NumPy ≥ 1.21
 
@@ -53,7 +47,6 @@ The framework supports both traditional batch workflows and simulated online lea
 git clone <repo-url>
 cd NumCompute
 pip install -e .
-```
 
 ### Development Mode
 
@@ -286,11 +279,9 @@ jupyter notebook stream_demo.ipynb
 
 ---
 
-# 8. Replace Future Work
+# Future Work
 
 ```md
-## Future Work
-
 - True online learning algorithms
 - Regression Trees
 - Random Forest Regressors
@@ -303,14 +294,49 @@ jupyter notebook stream_demo.ipynb
 
 ---
 ```
-## Author
+# Contributors
 
-Eruva Akhil  
-B.Tech Artificial Intelligence & Machine Learning  
+## Eruva Akhil — Project Lead & Primary Contributor
+
+Led the overall project and was responsible for the overall architecture, implementation, integration, machine learning components, streaming framework, testing, benchmarking, documentation, and development direction.
+
+## Shweta Bhattacharjee — Core Contributor
+
+Played a key supporting role throughout the project and contributed across multiple aspects of the development process. Worked closely with the project lead on implementation, testing, validation, documentation, troubleshooting, and overall project development.
+
+GitHub: [@ShwetaBhattacharjee](https://github.com/ShwetaBhattacharjee)
+
+## Pravallika — Contributor
+
+Contributed to the project as part of the development team.
 
 ---
-```
-## Conclusion
 
-NumCompute demonstrates how a complete ML framework can be built from scratch using NumPy, focusing on performance, modularity, and clarity.
+## Team
+
+The project was developed collaboratively, with team members contributing across development, testing, validation, documentation, and project support.
+
+| Contributor | Role |
+|---|---|
+| **Eruva Akhil** | Project Lead & Primary Contributor |
+| **Shweta Bhattacharjee** | Core Contributor |
+| **Pravallika** | Contributor |
+
+---
+
+# Author
+
+**Eruva Akhil**
+
+B.Tech Artificial Intelligence & Machine Learning
+
+---
+
+# Conclusion
+
+NumCompute demonstrates how a modular machine learning framework can be built from scratch using NumPy, with a focus on performance, numerical correctness, modularity, and clarity.
+
+The framework brings together data handling, preprocessing, statistics, optimisation, machine learning metrics, pipelines, decision trees, ensemble learning, streaming learning, benchmarking, visualisation, and automated testing into a unified architecture.
+
+Through its modular design and from-scratch implementations, NumCompute provides a transparent way to understand the core principles behind modern machine learning frameworks while maintaining a structure that can be extended with new algorithms and capabilities.
 ```
